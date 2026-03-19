@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Hari Raya Idul Fitri 1447 H ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   CSS VARIABLES & RESET
+═══════════════════════════════════════ */
+:root {
+  --bg:           #07111f;
+  --bg2:          #0b1a30;
+  --bg3:          #0f2040;
+  --gold:         #c9a227;
+  --gold-lt:      #f0d060;
+  --gold-dk:      #8a6d10;
+  --green:        #1a6b3c;
+  --green-lt:     #2daa58;
+  --white:        #fdf8f0;
+  --text:         #fdf8f0;
+  --text-muted:   rgba(253,248,240,.55);
+  --card-bg:      rgba(255,255,255,.04);
+  --card-border:  rgba(201,162,39,.25);
+  --popup-bg:     linear-gradient(145deg,#0b1a30,#0f2a50);
+  --shadow:       rgba(0,0,0,.5);
+}
+[data-theme="light"] {
+  --bg:           #f5ece0;
+  --bg2:          #ede0cc;
+  --bg3:          #e5d0b5;
+  --text:         #1a1208;
+  --text-muted:   rgba(30,15,0,.5);
+  --card-bg:      rgba(255,255,255,.6);
+  --card-border:  rgba(140,90,10,.3);
+  --popup-bg:     linear-gradient(145deg,#fdf8f0,#f0e0c0);
+  --shadow:       rgba(100,60,0,.2);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:background .4s,color .4s;
+  cursor:none;
+  min-height:100vh;
+}
+button{font-family:'Poppins',sans-serif}
+
+/* ═══════════════════════════════════════
+   CURSOR
+═══════════════════════════════════════ */
+#cur,#curT{
+  position:fixed;pointer-events:none;z-index:99999;
+  border-radius:50%;transform:translate(-50%,-50%);
+}
+#cur{width:10px;height:10px;background:var(--gold);transition:transform .08s}
+#curT{width:28px;height:28px;border:1.5px solid var(--gold);opacity:.45;transition:all .15s ease}
+
+/* ═══════════════════════════════════════
+   STARS CANVAS
+═══════════════════════════════════════ */
+#starsCanvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+
+/* ═══════════════════════════════════════
+   SPARKLE
+═══════════════════════════════════════ */
+#sparkle{position:fixed;inset:0;pointer-events:none;z-index:9990;overflow:hidden}
+
+/* ═══════════════════════════════════════
+   KETUPAT FALLING
+═══════════════════════════════════════ */
+#ketupats{
+  position:fixed;inset:0;overflow:hidden;
+  pointer-events:none;z-index:1;
+}
+.ktp{
+  position:absolute;top:-80px;
+  animation:ktpFall linear infinite;
+}
+@keyframes ktpFall{
+  0%  {transform:translateY(-80px) rotate(0deg);opacity:0}
+  8%  {opacity:.65}
+  90% {opacity:.4}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+
+/* ═══════════════════════════════════════
+   PATTERN BG
+═══════════════════════════════════════ */
+.pat{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 1px,transparent 40px),
+    repeating-linear-gradient(-45deg,var(--gold) 0,var(--gold) 1px,transparent 1px,transparent 40px);
+  opacity:.025;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:2rem;
+  overflow:hidden;z-index:2;
+}
+
+/* Lanterns */
+.lanterns{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;justify-content:space-between;
+  padding:0 40px;pointer-events:none;
+  z-index:3;
+}
+.lan{animation:lanSwing 4s ease-in-out infinite;transform-origin:top center;filter:drop-shadow(0 0 12px rgba(255,180,40,.6))}
+.lan:nth-child(2){animation-delay:-2s}
+.lan:nth-child(3){animation-delay:-1s}
+@keyframes lanSwing{
+  0%,100%{transform:rotate(-9deg)}
+  50%   {transform:rotate(9deg)}
+}
+
+/* Crescent */
+.crescent{
+  position:absolute;top:70px;right:70px;width:110px;
+  filter:drop-shadow(0 0 20px rgba(201,162,39,.7));
+  animation:moonPulse 3s ease-in-out infinite alternate;
+  z-index:3;
+}
+@keyframes moonPulse{
+  from{filter:drop-shadow(0 0 14px rgba(201,162,39,.4))}
+  to  {filter:drop-shadow(0 0 36px rgba(255,210,60,.95))}
+}
+
+/* Mosque */
+.mosque{
+  position:absolute;bottom:0;left:50%;
+  transform:translateX(-50%);
+  width:min(100%, 1000px);
+  opacity:.12;z-index:1;
+  transition:opacity .4s;
+}
+[data-theme="light"] .mosque{opacity:.08}
+
+/* Hero text */
+.hero-inner{position:relative;z-index:4}
+
+.arabic{
+  font-family:'Amiri',serif;
+  font-size:clamp(1.3rem,3.5vw,2.2rem);
+  color:var(--gold-lt);
+  margin-bottom:.4rem;letter-spacing:1px;
+  opacity:.9;
+}
+.h1{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.9rem,5.5vw,3.8rem);
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt),#fffbe0,var(--gold));
+  background-size:300% 300%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:goldFlow 5s ease infinite;
+  line-height:1.15;margin-bottom:.5rem;
+}
+@keyframes goldFlow{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+
+.badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  color:#150c00;font-weight:700;font-size:1rem;
+  padding:4px 22px;border-radius:20px;margin-bottom:1rem;
+}
+.sub{
+  font-size:clamp(.9rem,2vw,1.2rem);
+  color:var(--text-muted);
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:.4rem;font-weight:300;
+}
+.maaf{
+  font-family:'Amiri',serif;font-style:italic;
+  font-size:clamp(1rem,2.3vw,1.5rem);
+  color:var(--green-lt);margin-bottom:2.5rem;
+}
+
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  color:#150c00;border:none;
+  padding:14px 42px;font-size:1.05rem;font-weight:700;
+  border-radius:50px;cursor:pointer;
+  transition:all .3s;letter-spacing:.5px;
+  box-shadow:0 4px 22px rgba(201,162,39,.5);
+  position:relative;overflow:hidden;
+}
+.btn-gold::after{
+  content:'';position:absolute;top:0;left:-100%;
+  width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  transition:left .5s;
+}
+.btn-gold:hover::after{left:100%}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(201,162,39,.7)}
+
+.btn-outline{
+  background:transparent;border:1.5px solid var(--gold);
+  color:var(--gold);padding:8px 22px;
+  border-radius:30px;font-size:.88rem;cursor:pointer;
+  transition:all .3s;
+}
+.btn-outline:hover{background:var(--gold);color:#150c00}
+
+/* ═══════════════════════════════════════
+   SECTION SHARED
+═══════════════════════════════════════ */
+section{position:relative;z-index:2;padding:5rem 2rem}
+
+.sec-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.2rem,3vw,1.9rem);
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-align:center;margin-bottom:.5rem;
+}
+.sec-sub{
+  text-align:center;color:var(--text-muted);
+  margin-bottom:3rem;font-size:.93rem;
+}
+.divider{
+  display:flex;align-items:center;gap:1rem;
+  max-width:340px;margin:0 auto 1rem;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;
+}
+.divider::before{background:linear-gradient(90deg,transparent,var(--gold))}
+.divider::after {background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* ═══════════════════════════════════════
+   POPUP
+═══════════════════════════════════════ */
+#popOverlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.82);z-index:10000;
+  align-items:center;justify-content:center;
+  padding:1rem;backdrop-filter:blur(8px);
+}
+#popOverlay.show{display:flex;animation:fadeIn .3s ease}
+
+.pop-card{
+  background:var(--popup-bg);
+  border:1px solid var(--gold);border-radius:24px;
+  padding:3rem 2.5rem;max-width:520px;width:100%;
+  text-align:center;position:relative;
+  animation:popIn .55s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 0 60px rgba(201,162,39,.3);
+}
+@keyframes popIn{from{transform:scale(.5) rotate(-5deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+
+.pop-close{
+  position:absolute;top:1rem;right:1rem;
+  background:transparent;border:1px solid rgba(201,162,39,.35);
+  color:var(--gold);width:36px;height:36px;border-radius:50%;
+  font-size:1.1rem;cursor:pointer;transition:all .3s;
+  display:flex;align-items:center;justify-content:center;
+}
+.pop-close:hover{background:var(--gold);color:#150c00}
+
+.pop-arabic{
+  font-family:'Amiri',serif;font-size:1.7rem;
+  color:var(--gold);margin-bottom:.4rem;direction:rtl;
+}
+.pop-title{
+  font-family:'Cinzel Decorative',serif;font-size:1.35rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:1.5rem;
+}
+.pop-body{
+  font-family:'Amiri',serif;font-size:1.08rem;
+  line-height:2;color:var(--text);
+  margin-bottom:1.8rem;opacity:.9;
+}
+.pop-note{font-size:.82rem;color:var(--text-muted)}
+
+/* Pop geo decoration */
+.pop-geo{
+  position:absolute;top:0;right:0;width:130px;height:130px;
+  opacity:.06;pointer-events:none;overflow:hidden;border-radius:0 24px 0 0;
+}
+
+/* ═══════════════════════════════════════
+   UCAPAN PERSONAL
+═══════════════════════════════════════ */
+#greeting{background:var(--bg2)}
+
+.greet-box{max-width:520px;margin:0 auto;text-align:center}
+
+.inp-wrap input{
+  width:100%;
+  background:var(--card-bg);border:1.5px solid var(--card-border);
+  border-radius:50px;padding:14px 26px;font-size:1rem;
+  color:var(--text);outline:none;transition:all .3s;
+  margin-bottom:1.2rem;
+}
+.inp-wrap input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.15)}
+.inp-wrap input::placeholder{color:var(--text-muted)}
+
+.greet-result{
+  display:none;padding:2rem;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;margin-top:2rem;
+  animation:fadeUp .5s ease;text-align:center;
+}
+.greet-result.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.greet-name{
+  font-family:'Cinzel Decorative',serif;
+  font-size:1.5rem;color:var(--gold);margin-bottom:.75rem;
+}
+.greet-msg{
+  font-family:'Amiri',serif;font-size:1.05rem;
+  line-height:1.9;color:var(--text);opacity:.85;
+}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;border:none;
+  padding:10px 24px;border-radius:40px;
+  font-size:.88rem;font-weight:600;cursor:pointer;
+  margin-top:1.2rem;transition:all .3s;
+}
+.btn-wa:hover{background:#128C7E;transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════
+   SLIDER
+═══════════════════════════════════════ */
+#gallery{background:var(--bg3);overflow:hidden}
+
+.slider-wrap{overflow:hidden;margin:0 -2rem;padding:1rem 0}
+.slider-track{
+  display:flex;gap:1.5rem;
+  animation:scrollL 30s linear infinite;
+  width:max-content;
+}
+.slider-track:hover{animation-play-state:paused}
+@keyframes scrollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.sl-card{
+  width:270px;flex-shrink:0;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;padding:2rem 1.5rem;
+  text-align:center;position:relative;overflow:hidden;
+}
+.sl-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,162,39,.06),transparent);
+  pointer-events:none;
+}
+.sl-icon{font-size:2.8rem;margin-bottom:.8rem;display:block}
+.sl-title{
+  font-family:'Cinzel Decorative',serif;font-size:.95rem;
+  color:var(--gold);margin-bottom:.6rem;
+}
+.sl-text{
+  font-family:'Amiri',serif;font-size:.98rem;
+  line-height:1.75;color:var(--text);opacity:.75;
+}
+
+/* ═══════════════════════════════════════
+   THR
+═══════════════════════════════════════ */
+#thr{background:var(--bg2)}
+
+.thr-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;max-width:880px;margin:0 auto;
+}
+.thr-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:20px;padding:2rem;text-align:center;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.thr-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;border-radius:20px 20px 0 0;
+}
+.dana::before{background:linear-gradient(90deg,#118EEA,#3BB4F3)}
+.ovo::before {background:linear-gradient(90deg,#4C2A85,#9B59B6)}
+.gpay::before {background:linear-gradient(90deg,#00AED6,#00D4AA)}
+.thr-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 40px rgba(201,162,39,.22);
+  border-color:var(--gold);
+}
+
+.thr-logo{font-size:2.4rem;margin-bottom:.6rem}
+.thr-name{
+  font-size:1.25rem;font-weight:700;
+  color:var(--gold);margin-bottom:.5rem;
+}
+.thr-num{
+  font-family:'Courier New',monospace;font-size:1.05rem;
+  font-weight:600;letter-spacing:1.5px;
+  background:var(--card-bg);border:1px dashed var(--card-border);
+  padding:8px 16px;border-radius:10px;
+  margin-bottom:.8rem;display:block;color:var(--text);
+}
+.thr-thankyou{
+  margin-top:1rem;
+  font-family:'Amiri',serif;font-style:italic;
+  font-size:1rem;color:var(--gold);opacity:.8;
+  letter-spacing:.4px;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{
+  position:relative;z-index:2;
+  background:var(--bg3);padding:3rem 2rem;
+  text-align:center;border-top:1px solid var(--card-border);
+}
+.foot-icons{font-size:2rem;margin-bottom:1rem;letter-spacing:8px}
+.foot-txt{
+  font-family:'Amiri',serif;font-size:1.08rem;
+  color:var(--text);opacity:.7;margin-bottom:.4rem;
+}
+.foot-auth{font-size:.88rem;color:var(--gold);font-weight:600}
+
+/* ═══════════════════════════════════════
+   FLOATING CONTROLS
+═══════════════════════════════════════ */
+.floats{
+  position:fixed;bottom:1.8rem;right:1.5rem;
+  display:flex;flex-direction:column;gap:.7rem;z-index:1000;
+}
+.fl-btn{
+  width:48px;height:48px;border-radius:50%;
+  border:1.5px solid var(--card-border);
+  background:rgba(7,17,31,.88);backdrop-filter:blur(12px);
+  color:var(--gold);font-size:1.2rem;cursor:pointer;
+  transition:all .3s;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px var(--shadow);
+}
+[data-theme="light"] .fl-btn{background:rgba(245,236,224,.92)}
+.fl-btn:hover{background:var(--gold);color:#150c00;transform:scale(1.12);box-shadow:0 6px 22px rgba(201,162,39,.4)}
+
+#scrollTop{
+  position:fixed;bottom:1.8rem;left:1.5rem;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--green);color:#fff;border:none;
+  font-size:1.3rem;cursor:pointer;z-index:1000;
+  transition:all .3s;display:none;
+  align-items:center;justify-content:center;
+  box-shadow:0 4px 16px var(--shadow);
+}
+#scrollTop.show{display:flex}
+#scrollTop:hover{transform:scale(1.1);background:var(--green-lt)}
+
+/* YouTube hidden */
+#ytWrap{
+  position:fixed;width:1px;height:1px;
+  overflow:hidden;opacity:0;pointer-events:none;top:-1px;
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:640px){
+  .crescent{width:75px;top:45px;right:18px}
+  .thr-grid{grid-template-columns:1fr;max-width:320px}
+  section{padding:3.5rem 1.25rem}
+  .pop-card{padding:2rem 1.25rem}
+  .lanterns{display:none}
+  .h1{font-size:clamp(1.6rem,8vw,2.4rem)}
+}
+@media(max-width:380px){
+  .h1{font-size:1.6rem}
+  .arabic{font-size:1.1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cur"></div>
+<div id="curT"></div>
+
+<!-- Sparkles -->
+<div id="sparkle"></div>
+
+<!-- Stars -->
+<canvas id="starsCanvas"></canvas>
+
+<!-- Falling ketupat -->
+<div id="ketupats"></div>
+
+<!-- ═══════════ POPUP ═══════════ -->
+<div id="popOverlay">
+  <div class="pop-card">
+    <!-- Geometric decoration -->
+    <svg class="pop-geo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" stroke="#c9a227" stroke-width="1.5"/>
+      <polygon points="100,10 190,100 100,190 10,100" stroke="#c9a227" stroke-width="1.5" fill="none"/>
+      <polygon points="100,40 160,100 100,160 40,100" stroke="#c9a227" stroke-width="1" fill="none"/>
+      <circle cx="100" cy="100" r="40" stroke="#c9a227" stroke-width="1" fill="none"/>
+    </svg>
+    <button class="pop-close" id="popClose">✕</button>
+    <div class="pop-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <div class="pop-title">Selamat Hari Raya Idul Fitri 1447 H</div>
+    <div class="pop-body">
+      🌙 <em>Taqabbalallahu minna wa minkum</em><br>
+      <em>Shiyamana wa shiyamakum</em><br><br>
+      Semoga Allah SWT menerima seluruh amal ibadah kita,<br>
+      mengampuni segala dosa dan khilaf,<br>
+      serta mempertemukan kita kembali<br>
+      di bulan Ramadan yang akan datang.<br><br>
+      <strong style="color:var(--gold)">Mohon Maaf Lahir dan Batin 🤲</strong>
+    </div>
+    <div class="pop-note">✨ Semoga Syawal ini membawa keberkahan dan kebahagiaan ✨</div>
+  </div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="pat"></div>
+
+  <!-- Lanterns -->
+  <div class="lanterns" aria-hidden="true">
+    <svg class="lan" width="48" height="88" viewBox="0 0 48 88">
+      <line x1="24" y1="0" x2="24" y2="10" stroke="#c9a227" stroke-width="2"/>
+      <ellipse cx="24" cy="14" rx="11" ry="4" fill="#c9a227"/>
+      <rect x="9" y="14" width="30" height="52" rx="15" fill="rgba(255,140,0,.75)"/>
+      <ellipse cx="24" cy="14" rx="11" ry="4" fill="#c9a227" opacity=".7"/>
+      <line x1="9" y1="28" x2="39" y2="28" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <line x1="9" y1="42" x2="39" y2="42" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <line x1="9" y1="56" x2="39" y2="56" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <ellipse cx="24" cy="66" rx="11" ry="4" fill="#c9a227"/>
+      <line x1="24" y1="66" x2="19" y2="78" stroke="#c9a227" stroke-width="1.5"/>
+      <line x1="24" y1="66" x2="24" y2="80" stroke="#c9a227" stroke-width="1.5"/>
+      <line x1="24" y1="66" x2="29" y2="78" stroke="#c9a227" stroke-width="1.5"/>
+      <ellipse cx="24" cy="38" rx="9" ry="13" fill="rgba(255,200,40,.35)"/>
+    </svg>
+    <svg class="lan" width="48" height="88" viewBox="0 0 48 88">
+      <line x1="24" y1="0" x2="24" y2="10" stroke="#c9a227" stroke-width="2"/>
+      <ellipse cx="24" cy="14" rx="11" ry="4" fill="#c9a227"/>
+      <rect x="9" y="14" width="30" height="52" rx="15" fill="rgba(160,40,200,.75)"/>
+      <line x1="9" y1="28" x2="39" y2="28" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <line x1="9" y1="42" x2="39" y2="42" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <line x1="9" y1="56" x2="39" y2="56" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <ellipse cx="24" cy="66" rx="11" ry="4" fill="#c9a227"/>
+      <line x1="24" y1="66" x2="19" y2="78" stroke="#c9a227" stroke-width="1.5"/>
+      <line x1="24" y1="66" x2="24" y2="80" stroke="#c9a227" stroke-width="1.5"/>
+      <line x1="24" y1="66" x2="29" y2="78" stroke="#c9a227" stroke-width="1.5"/>
+      <ellipse cx="24" cy="38" rx="9" ry="13" fill="rgba(200,80,255,.35)"/>
+    </svg>
+    <svg class="lan" width="48" height="88" viewBox="0 0 48 88">
+      <line x1="24" y1="0" x2="24" y2="10" stroke="#c9a227" stroke-width="2"/>
+      <ellipse cx="24" cy="14" rx="11" ry="4" fill="#c9a227"/>
+      <rect x="9" y="14" width="30" height="52" rx="15" fill="rgba(10,130,80,.75)"/>
+      <line x1="9" y1="28" x2="39" y2="28" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <line x1="9" y1="42" x2="39" y2="42" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <line x1="9" y1="56" x2="39" y2="56" stroke="#c9a227" stroke-width=".8" opacity=".5"/>
+      <ellipse cx="24" cy="66" rx="11" ry="4" fill="#c9a227"/>
+      <line x1="24" y1="66" x2="19" y2="78" stroke="#c9a227" stroke-width="1.5"/>
+      <line x1="24" y1="66" x2="24" y2="80" stroke="#c9a227" stroke-width="1.5"/>
+      <line x1="24" y1="66" x2="29" y2="78" stroke="#c9a227" stroke-width="1.5"/>
+      <ellipse cx="24" cy="38" rx="9" ry="13" fill="rgba(40,200,100,.35)"/>
+    </svg>
+  </div>
+
+  <!-- Crescent moon + star -->
+  <svg class="crescent" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="mg" cx="38%" cy="38%">
+        <stop offset="0%" stop-color="#fff8dc"/>
+        <stop offset="100%" stop-color="#c9a227"/>
+      </radialGradient>
+    </defs>
+    <circle cx="58" cy="58" r="52" fill="url(#mg)"/>
+    <circle cx="88" cy="38" r="45" fill="#07111f"/>
+    <polygon points="30,22 32.5,15 35,22 42,22 36,26.5 38.5,33 32.5,28.5 26.5,33 29,26.5 23,22"
+             fill="#c9a227" opacity=".9"/>
+    <circle cx="28" cy="55" r="2" fill="#c9a227" opacity=".6"/>
+    <circle cx="20" cy="35" r="1.5" fill="#c9a227" opacity=".5"/>
+  </svg>
+
+  <!-- Mosque silhouette -->
+  <svg class="mosque" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="0" y="240" width="1000" height="80" fill="var(--gold)"/>
+    <!-- Big dome -->
+    <path d="M 500 110 Q 440 110 415 180 L 585 180 Q 560 110 500 110 Z" fill="var(--gold)"/>
+    <rect x="380" y="180" width="240" height="140" fill="var(--gold)"/>
+    <!-- Side domes -->
+    <path d="M 330 170 Q 290 170 270 210 L 390 210 Q 370 170 330 170 Z" fill="var(--gold)"/>
+    <rect x="265" y="210" width="130" height="110" fill="var(--gold)"/>
+    <path d="M 670 170 Q 630 170 610 210 L 730 210 Q 710 170 670 170 Z" fill="var(--gold)"/>
+    <rect x="605" y="210" width="130" height="110" fill="var(--gold)"/>
+    <!-- Minarets -->
+    <rect x="195" y="100" width="34" height="220" fill="var(--gold)" rx="3"/>
+    <path d="M212 80 L190 110 L234 110 Z" fill="var(--gold)"/>
+    <ellipse cx="212" cy="76" rx="9" ry="14" fill="var(--gold)"/>
+    <rect x="771" y="100" width="34" height="220" fill="var(--gold)" rx="3"/>
+    <path d="M788 80 L766 110 L810 110 Z" fill="var(--gold)"/>
+    <ellipse cx="788" cy="76" rx="9" ry="14" fill="var(--gold)"/>
+    <!-- Door -->
+    <rect x="475" y="255" width="50" height="65" rx="25" fill="var(--bg)"/>
+    <!-- Windows -->
+    <rect x="390" y="230" width="38" height="50" rx="19" fill="var(--bg)"/>
+    <rect x="572" y="230" width="38" height="50" rx="19" fill="var(--bg)"/>
+  </svg>
+
+  <!-- Main content -->
+  <div class="hero-inner" data-aos="fade-up">
+    <div class="arabic">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</div>
+    <div class="h1">Selamat Hari Raya<br>Idul Fitri</div>
+    <div style="margin-bottom:.8rem"><span class="badge">1447 H &nbsp;/&nbsp; 2026 M</span></div>
+    <div class="sub">Minal 'Aidin wal Faizin</div>
+    <div class="maaf">Mohon Maaf Lahir dan Batin &nbsp;🤲</div>
+    <button class="btn-gold" onclick="openPopup()">✨ Buka Ucapan ✨</button>
+  </div>
+</section>
+
+<!-- ═══════════ GREETING ═══════════ -->
+<section id="greeting" data-aos="fade-up">
+  <div class="divider"><span style="color:var(--gold);font-size:1.2rem">💌</span></div>
+  <div class="sec-title">Ucapan Personal</div>
+  <div class="sec-sub">Tulis namamu, dan kami siapkan ucapan spesial untukmu ✨</div>
+  <div class="greet-box">
+    <div class="inp-wrap">
+      <input id="nameInp" type="text" placeholder="Masukkan nama kamu…" maxlength="40"
+             onkeypress="if(event.key==='Enter')genGreet()"/>
+    </div>
+    <button class="btn-gold" onclick="genGreet()">🌙 Dapatkan Ucapan</button>
+    <div class="greet-result" id="greetResult">
+      <div class="greet-name" id="greetName"></div>
+      <div class="greet-msg" id="greetMsg"></div>
+      <button class="btn-wa" onclick="shareWA()">
+        <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Share ke WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDER ═══════════ -->
+<section id="gallery" data-aos="fade-up">
+  <div class="divider"><span style="color:var(--gold);font-size:1.2rem">🕌</span></div>
+  <div class="sec-title">Kumpulan Doa & Ucapan</div>
+  <div class="sec-sub">Geser untuk melihat lebih banyak — hover untuk berhenti ☽</div>
+  <div class="slider-wrap">
+    <div class="slider-track" id="slTrack"></div>
+  </div>
+</section>
+
+<!-- ═══════════ THR ═══════════ -->
+<section id="thr" data-aos="fade-up">
+  <div class="divider"><span style="color:var(--gold);font-size:1.2rem">💝</span></div>
+  <div class="sec-title">Kirim THR Digital</div>
+  <div class="sec-sub">Berbagi kebahagiaan lewat e-wallet • Salin nomor lalu transfer 📲</div>
+  <div class="thr-grid">
+
+    <div class="thr-card dana" data-aos="fade-up" data-aos-delay="100">
+      <div class="thr-logo">💙</div>
+      <div class="thr-name">DANA</div>
+      <span class="thr-num" id="num-dana">0812-3456-7890</span>
+      <button class="btn-outline" onclick="copyNum('num-dana',this)">📋 Salin Nomor</button>
+      <div class="thr-thankyou">Jazakallahu Khairan 🤍</div>
+    </div>
+
+    <div class="thr-card ovo" data-aos="fade-up" data-aos-delay="200">
+      <div class="thr-logo">💜</div>
+      <div class="thr-name">OVO</div>
+      <span class="thr-num" id="num-ovo">0821-9876-5432</span>
+      <button class="btn-outline" onclick="copyNum('num-ovo',this)">📋 Salin Nomor</button>
+      <div class="thr-thankyou">Jazakallahu Khairan 🤍</div>
+    </div>
+
+    <div class="thr-card gpay" data-aos="fade-up" data-aos-delay="300">
+      <div class="thr-logo">💚</div>
+      <div class="thr-name">GoPay</div>
+      <span class="thr-num" id="num-gpay">0857-1122-3344</span>
+      <button class="btn-outline" onclick="copyNum('num-gpay',this)">📋 Salin Nomor</button>
+      <div class="thr-thankyou">Jazakallahu Khairan 🤍</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="foot-icons">🕌 ☽ ⭐</div>
+  <div class="foot-txt">Dibuat dengan ❤️ untuk menyambut Hari Raya Idul Fitri 1447 H</div>
+  <div class="foot-auth">© 2026 — Semoga amal kita diterima di sisi-Nya 🤲</div>
+</footer>
+
+<!-- Floating controls -->
+<div class="floats">
+  <button class="fl-btn" id="themeBtn" onclick="toggleTheme()" title="Ganti tema">🌙</button>
+  <button class="fl-btn" id="musicBtn" onclick="toggleMusic()" title="Musik islami">🎵</button>
+</div>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ke atas">↑</button>
+
+<!-- YouTube hidden player -->
+<div id="ytWrap"><div id="ytDiv"></div></div>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
+<script>
+/* ═══ AOS ═══ */
+AOS.init({duration:800,once:true,offset:60});
+
+/* ═══ THEME ═══ */
+let dark = true;
+function toggleTheme(){
+  dark=!dark;
+  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+  document.getElementById('themeBtn').textContent=dark?'🌙':'☀️';
+  if(!dark) ctx.clearRect(0,0,cv.width,cv.height);
+}
+
+/* ═══ STARS CANVAS ═══ */
+const cv=document.getElementById('starsCanvas');
+const ctx=cv.getContext('2d');
+let stars=[],shooters=[];
+
+function resize(){
+  cv.width=innerWidth;cv.height=innerHeight;initStars();
+}
+function initStars(){
+  stars=Array.from({length:220},()=>({
+    x:Math.random()*cv.width,
+    y:Math.random()*cv.height,
+    r:Math.random()*1.8+.3,
+    a:Math.random(),
+    ts:Math.random()*.018+.004
+  }));
+}
+function drawStars(){
+  if(!dark){requestAnimationFrame(drawStars);return}
+  ctx.clearRect(0,0,cv.width,cv.height);
+  stars.forEach(s=>{
+    s.a+=s.ts;
+    if(s.a>1||s.a<0)s.ts*=-1;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,220,${Math.abs(s.a)})`;
+    ctx.fill();
+  });
+  if(Math.random()<.004){
+    shooters.push({x:Math.random()*cv.width,y:Math.random()*cv.height*.45,a:1});
+  }
+  shooters=shooters.filter(s=>s.a>0);
+  shooters.forEach(s=>{
+    ctx.beginPath();
+    ctx.moveTo(s.x,s.y);
+    ctx.lineTo(s.x-130,s.y+65);
+    ctx.strokeStyle=`rgba(255,240,180,${s.a})`;
+    ctx.lineWidth=1.5;ctx.stroke();
+    s.x+=7;s.y+=3.5;s.a-=.025;
+  });
+  requestAnimationFrame(drawStars);
+}
+addEventListener('resize',resize);
+resize(); drawStars();
+
+/* ═══ KETUPAT ═══ */
+const ktCont=document.getElementById('ketupats');
+for(let i=0;i<14;i++){
+  const s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  const sz=Math.random()*18+18;
+  s.classList.add('ktp');
+  s.setAttribute('viewBox','-1 -1 102 102');
+  s.style.cssText=`
+    width:${sz}px;left:${Math.random()*100}vw;
+    animation-duration:${Math.random()*9+8}s;
+    animation-delay:${Math.random()*12}s;
+    filter:drop-shadow(0 0 5px rgba(201,162,39,.45));
+  `;
+  s.innerHTML=`
+    <polygon points="50,0 100,50 50,100 0,50"
+      fill="none" stroke="#c9a227" stroke-width="3"/>
+    <polygon points="50,18 82,50 50,82 18,50"
+      fill="rgba(201,162,39,.18)" stroke="#c9a227" stroke-width="1.5"/>
+    <polygon points="50,32 68,50 50,68 32,50"
+      fill="rgba(201,162,39,.38)"/>
+    <line x1="50" y1="0" x2="50" y2="100" stroke="#c9a227" stroke-width=".8" opacity=".3"/>
+    <line x1="0" y1="50" x2="100" y2="50" stroke="#c9a227" stroke-width=".8" opacity=".3"/>
+  `;
+  ktCont.appendChild(s);
+}
+
+/* ═══ SLIDER ═══ */
+const slides=[
+  {icon:'🌙',title:'Bulan Syawal',text:'Semoga Syawal membawa cahaya, ketenangan, dan keberkahan dalam setiap langkah perjalanan hidupmu.'},
+  {icon:'🕌',title:'Doa Idul Fitri',text:'Taqabbalallahu minna wa minkum. Semoga Allah menerima semua ibadah kita di bulan yang penuh rahmat.'},
+  {icon:'🌿',title:'Hati yang Fitri',text:'Di hari yang suci ini, semoga hati kita kembali bersih, jiwa kita semakin tenang, dan langkah kita semakin lurus.'},
+  {icon:'🤲',title:'Silaturahmi',text:'Erat silaturahmi, pererat ukhuwah. Karena lebaran paling indah adalah saat berkumpul bersama orang tersayang.'},
+  {icon:'⭐',title:'Cahaya Ramadan',text:'Ramadan telah berlalu, namun semangat dan cahayanya semoga terus menyala abadi di dalam hati kita.'},
+  {icon:'🎆',title:'Hari Kemenangan',text:'Selamat merayakan kemenangan setelah sebulan penuh berpuasa, bertarawih, dan beramal saleh dengan ikhlas.'},
+  {icon:'💛',title:'Kasih Sayang',text:'Lebaran bukan soal ketupat dan opor saja, tapi soal cinta yang kita bagikan kepada sesama dengan tulus.'},
+  {icon:'🕊️',title:'Perdamaian',text:'Dengan hati yang fitri, semoga kita mampu menebarkan kedamaian, kebaikan, dan kasih sayang di mana pun kita berada.'},
+  {icon:'🌺',title:'Keberkahan',text:'Semoga setiap doa yang terucap di hari raya ini dikabulkan Allah SWT dan menjadi berkah bagi kita semua.'},
+  {icon:'🏡',title:'Keluarga',text:'Sejauh apa pun kita merantau, lebaran selalu memanggil pulang. Karena rumah adalah tempat jiwa beristirahat.'},
+];
+const track=document.getElementById('slTrack');
+[...slides,...slides].forEach(d=>{
+  const c=document.createElement('div');
+  c.className='sl-card';
+  c.innerHTML=`<span class="sl-icon">${d.icon}</span><div class="sl-title">${d.title}</div><div class="sl-text">${d.text}</div>`;
+  track.appendChild(c);
+});
+
+/* ═══ POPUP ═══ */
+function openPopup(){
+  document.getElementById('popOverlay').classList.add('show');
+  confettiBlast();
+}
+function closePopup(){
+  document.getElementById('popOverlay').classList.remove('show');
+}
+document.getElementById('popClose').addEventListener('click',closePopup);
+document.getElementById('popOverlay').addEventListener('click',function(e){
+  if(e.target===this)closePopup();
+});
+
+/* ═══ CONFETTI ═══ */
+function confettiBlast(){
+  const cols=['#c9a227','#f0d060','#2daa58','#1a6b3c','#fff8dc','#ff9f43','#ee5a24'];
+  const base={spread:90,colors:cols,shapes:['circle','square']};
+  confetti({...base,particleCount:130,origin:{y:.6}});
+  setTimeout(()=>confetti({...base,particleCount:70,spread:130,origin:{y:.3,x:.15}}),350);
+  setTimeout(()=>confetti({...base,particleCount:70,spread:130,origin:{y:.3,x:.85}}),550);
+}
+
+/* ═══ PERSONAL GREETING ═══ */
+const tpls=[
+  'Selamat Hari Raya Idul Fitri 1447 H, {n}! 🌙\nSemoga di hari yang fitri ini, segala dosa diampuni,\nhati semakin bersih, dan hidupmu semakin berkah.\nMohon Maaf Lahir dan Batin ya! 🤲',
+  'Hei {n}! 🌟 Taqabbalallahu minna wa minkum.\nSemoga amal ibadah kita diterima oleh Allah SWT,\ndan Syawal ini membawa kebahagiaan tak terhingga.\nSelamat merayakan Idul Fitri! 🕌',
+  'Untuk {n} yang tercinta 💛\nSemoga hari raya ini menjadi momen indah\nuntuk mempererat silaturahmi dan menebar kasih sayang.\nMinal Aidin wal Faizin! 🌿 Mohon Maaf Lahir Batin.',
+  'Assalamualaikum {n}! ✨\nSemoga di hari yang mulia ini Allah SWT\nmelimpahkan rahmat, hidayah, dan keberkahan untukmu.\nSelamat Idul Fitri 1447 H! 🤍',
+];
+let curGreet='',curName='';
+
+function genGreet(){
+  const n=document.getElementById('nameInp').value.trim();
+  if(!n){
+    const inp=document.getElementById('nameInp');
+    inp.style.borderColor='#e74c3c';inp.focus();
+    setTimeout(()=>inp.style.borderColor='',1600);
+    return;
+  }
+  curName=n;
+  const t=tpls[Math.floor(Math.random()*tpls.length)];
+  curGreet=t.replace(/{n}/g,n);
+  document.getElementById('greetName').textContent=`✨ Halo, ${n}! ✨`;
+  document.getElementById('greetMsg').innerHTML=curGreet.replace(/\n/g,'<br>');
+  const res=document.getElementById('greetResult');
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth',block:'center'});
+  confettiBlast();
+}
+
+function shareWA(){
+  const txt=encodeURIComponent(curGreet+'\n\n🌐 Lihat ucapan di: '+location.href);
+  window.open('https://wa.me/?text='+txt,'_blank');
+}
+
+/* ═══ COPY NUMBER ═══ */
+function copyNum(id,btn){
+  const raw=document.getElementById(id).textContent.replace(/\D/g,'');
+  const copy=()=>{
+    btn.textContent='✅ Tersalin!';
+    btn.style.background='var(--gold)';btn.style.color='#150c00';
+    btn.style.borderColor='var(--gold)';
+    setTimeout(()=>{
+      btn.textContent='📋 Salin Nomor';
+      btn.style.background='';btn.style.color='';btn.style.borderColor='';
+    },2200);
+  };
+  navigator.clipboard.writeText(raw).then(copy).catch(()=>{
+    const el=Object.assign(document.createElement('textarea'),{value:raw});
+    document.body.appendChild(el);el.select();document.execCommand('copy');
+    document.body.removeChild(el);copy();
+  });
+}
+
+/* ═══ VISITOR COUNTER REMOVED ═══ */
+
+/* ═══ CUSTOM CURSOR ═══ */
+const cur=document.getElementById('cur'),curT=document.getElementById('curT');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  setTimeout(()=>{curT.style.left=mx+'px';curT.style.top=my+'px';},90);
+});
+
+/* ═══ CLICK SPARKLES ═══ */
+document.addEventListener('click',e=>{
+  if(['BUTTON','INPUT'].includes(e.target.tagName))return;
+  spawnSparkles(e.clientX,e.clientY);
+});
+function spawnSparkles(x,y){
+  const cols=['#c9a227','#f0d060','#fff8dc','#2daa58','#ffffff','#ffcc00'];
+  for(let i=0;i<10;i++){
+    const el=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    el.setAttribute('viewBox','0 0 24 24');
+    const sz=Math.random()*14+8;
+    const c=cols[Math.floor(Math.random()*cols.length)];
+    el.innerHTML=`<polygon points="12,2 14.4,9.3 22,9.3 15.9,13.5 18.2,21 12,16.7 5.8,21 8.1,13.5 2,9.3 9.6,9.3" fill="${c}"/>`;
+    Object.assign(el.style,{
+      position:'fixed',width:sz+'px',height:sz+'px',
+      left:x+'px',top:y+'px',pointerEvents:'none',zIndex:'9990'
+    });
+    document.getElementById('sparkle').appendChild(el);
+    const ang=(i/10)*360*Math.PI/180;
+    const d=Math.random()*45+20;
+    el.animate([
+      {transform:`translate(-50%,-50%) translate(0,0) scale(1)`,opacity:1},
+      {transform:`translate(-50%,-50%) translate(${Math.cos(ang)*d}px,${Math.sin(ang)*d}px) scale(0)`,opacity:0}
+    ],{duration:700+Math.random()*200,easing:'ease-out',fill:'forwards'}).onfinish=()=>el.remove();
+  }
+}
+
+/* ═══ SCROLL TOP ═══ */
+const stBtn=document.getElementById('scrollTop');
+addEventListener('scroll',()=>stBtn.classList.toggle('show',scrollY>400));
+
+/* ═══ YOUTUBE MUSIC ═══ */
+// Video ID — ganti dengan takbiran pilihan kamu (misal: cari "Gema Takbiran" di YouTube)
+const YT_ID='Ito-DwjMxSQ';
+let ytPlayer=null,ytReady=false,playing=false;
+const ytScript=document.createElement('script');
+ytScript.src='https://www.youtube.com/iframe_api';
+document.head.appendChild(ytScript);
+
+window.onYouTubeIframeAPIReady=function(){
+  ytReady=true;
+  ytPlayer=new YT.Player('ytDiv',{
+    height:'1',width:'1',videoId:YT_ID,
+    playerVars:{autoplay:0,loop:1,playlist:YT_ID},
+    events:{onReady:()=>{console.log('%c🎵 YouTube siap!','color:#c9a227')}}
+  });
+};
+function toggleMusic(){
+  if(!ytReady||!ytPlayer?.playVideo){
+    return alert('Player masih loading, coba lagi sebentar lagi ya 🕐');
+  }
+  if(playing){ytPlayer.pauseVideo();document.getElementById('musicBtn').textContent='🎵';playing=false;}
+  else{ytPlayer.playVideo();document.getElementById('musicBtn').textContent='⏸️';playing=true;}
+}
+</script>
+</body>
+</html>
